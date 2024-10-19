@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "CustomNotoNastaliqFont";
+  src: url("./design-files/font/AvenirLTStd-Book.otf") format("woff");
+  font-weight: 400; /* Normal */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CustomNotoNastaliqFont";
+  src: url("./design-files/font/AvenirLTStd-Roman.otf") format("truetype");
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CustomNotoNastaliqFont";
+  src: url("./design-files/font/AvenirLTStd-Black.otf") format("woff2");
+  font-weight: 900; /* Bold */
+  font-style: normal;
+}
+
+*,
+body {
+  font-family: "CustomNotoNastaliqFont", sans-serif;
+}
