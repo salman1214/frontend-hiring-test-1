@@ -3,11 +3,12 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import { MenuItem, Pagination, Select } from '@mui/material';
 import CallsTable from './components/CallsTable';
-import { API, getCalls } from '../../services';
+import { getCalls } from '../../services';
 
 const Home = () => {
     const [loading, setLoading] = useState(false)
     const [reFetch, setReFetch] = useState(false)
+    const [statusFilter, setStatusFilter] = useState(10)
     const reload = () => setReFetch(!reFetch)
     const [pageInfo, setPageInfo] = useState({
         page: 1,
@@ -40,9 +41,9 @@ const Home = () => {
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            // value={age}
+                            value={statusFilter}
                             label="Status"
-                            // onChange={handleChange}
+                            onChange={(e) => setStatusFilter(e.target.value)}
                             color='primary'
                         >
                             <MenuItem value={10}>All</MenuItem>
@@ -54,6 +55,7 @@ const Home = () => {
 
                 <CallsTable
                     data={calls}
+                    statusFilter={statusFilter}
                     reload={reload}
                     loading={loading}
                     setLoading={setLoading}

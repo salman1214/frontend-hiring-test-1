@@ -34,7 +34,7 @@ const callTypeColors = {
     voicemail: "text-[#325AE7]",
 }
 
-const CallsTable = ({ data, reload, loading, setLoading }) => {
+const CallsTable = ({ data, statusFilter, reload, loading, setLoading }) => {
     const [errorState, setErrorState] = useState("")
     
     const [open, setOpen] = useState(false);
@@ -122,7 +122,9 @@ const CallsTable = ({ data, reload, loading, setLoading }) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data?.map((row, index) => {
+                        {data?.filter(
+                            (row) => statusFilter === 10 ? row : statusFilter === 20 ? row.is_archived : !row.is_archived
+                        ).map((row, index) => {
                             return (
                                 <TableRow
                                     key={index}
