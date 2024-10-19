@@ -16,7 +16,6 @@ const Home = () => {
     })
     const [calls, setCalls] = useState([])
     useEffect(() => {
-        if (API.defaults.headers.common['Authorization'] === undefined) return;
         let offset = (pageInfo.page - 1) * pageInfo.limit;
         getCalls({ offset: offset, limit: pageInfo.limit }).then(res => {
             setCalls(res.data.nodes)
