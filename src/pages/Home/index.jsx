@@ -61,13 +61,17 @@ const Home = () => {
                 />
 
                 <div className='flex justify-center mb-20'>
-                    <Pagination
-                        color='primary'
-                        count={pageInfo.totalPages} shape="rounded"
-                        page={pageInfo.page}
-                        onChange={(e, value) => setPageInfo({ ...pageInfo, page: value })}
-                    />
+                    <div className='flex flex-col items-center'>
+                        <Pagination
+                            color='primary'
+                            count={pageInfo.totalPages} shape="rounded"
+                            page={pageInfo.page}
+                            onChange={(e, value) => setPageInfo({ ...pageInfo, page: value })}
+                        />
+                        {(pageInfo.page - 1) * pageInfo.limit + 1} - {pageInfo.page * pageInfo.limit} of {pageInfo.totalPages * pageInfo.limit} results
+                    </div>
                 </div>
+
             </div>
 
         </div>
