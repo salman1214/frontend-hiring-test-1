@@ -122,9 +122,10 @@ const CallsTable = ({ data, statusFilter, reload, loading, setLoading }) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data?.filter(
-                            (row) => statusFilter === 10 ? row : statusFilter === 20 ? row.is_archived : !row.is_archived
-                        ).map((row, index) => {
+                        {
+                        data?.filter((row) => statusFilter === 10 ? row : statusFilter === 20 ? row.is_archived : !row.is_archived).length > 0 ?
+                        data?.filter((row) => statusFilter === 10 ? row : statusFilter === 20 ? row.is_archived : !row.is_archived)
+                        .map((row, index) => {
                             return (
                                 <TableRow
                                     key={index}
@@ -161,7 +162,14 @@ const CallsTable = ({ data, statusFilter, reload, loading, setLoading }) => {
                                     </TableCell>
                                 </TableRow>
                             )
-                        })}
+                        })
+                        :
+                        <TableRow>
+                            <TableCell colSpan={9} className='w-full flex justify-center'>
+                                <div className='text-center text-base'>No data found</div>
+                            </TableCell>
+                        </TableRow>
+                        }
                     </TableBody>
                 </Table>
             </TableContainer>
